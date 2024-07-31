@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int searchElement, i;
+
+    printf("Enter the element to search: ");
+    scanf("%d", &searchElement);
+
+    for (i = 0; i < 5; i++) {
+        if (arr[i] == searchElement) {
+            printf("Element found at index %d\n", i);
+            break;
+        }
+    }
+
+    if (i == 5) {
+        printf("Element not found\n");
+    }
+
+    return 0;
+}
+
