@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void mergeArrays(int arr1[], int arr2[], int n1, int n2) {
+    int i = n1 - 1, j = 0;
+    while (i >= 0 && j < n2) {
+        if (arr1[i] > arr2[j]) {
+            int temp = arr1[i];
+            arr1[i] = arr2[j];
+            arr2[j] = temp;
+            i--;
+            j++;
+        } else {
+            break;
+        }
+    }
+    // Sort both arrays individually
+    for (int k = 0; k < n1 - 1; k++) {
+        if (arr1[k] > arr1[k + 1]) {
+            int temp = arr1[k];
+            arr1[k] = arr1[k + 1];
+            arr1[k + 1] = temp;
+        }
+    }
+    for (int k = 0; k < n2 - 1; k++) {
+        if (arr2[k] > arr2[k + 1]) {
+            int temp = arr2[k];
+            arr2[k] = arr2[k + 1];
+            arr2[k + 1] = temp;
+        }
+    }
+}
+
+int main() {
+    int arr1[] = {1, 3, 5, 7};
+    int arr2[] = {2, 4, 6, 8};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    mergeArrays(arr1, arr2, n1, n2);
+
+    printf("Merged Sorted Array: ");
+    for (int i = 0; i < n1; i++) {
+        printf("%d ", arr1[i]);
+    }
+    for (int i = 0; i < n2; i++) {
+        printf("%d ", arr2[i]);
+    }
+
+    return 0;
+}
