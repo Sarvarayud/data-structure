@@ -20,3 +20,29 @@ void insertAtEnd(struct Node** head_ref, int new_data) {
 
     while (last->next != NULL) {
         last = last->next;
+    }
+
+    last->next = new_node;
+}
+
+void printList(struct Node* node) {
+    while (node != NULL) {
+        printf("%d -> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    insertAtEnd(&head, 22);
+    insertAtEnd(&head, 77);
+    insertAtEnd(&head, 55);
+    insertAtEnd(&head, 88);
+    insertAtEnd(&head, 110);
+
+    printList(head);
+
+    return 0;
+}
