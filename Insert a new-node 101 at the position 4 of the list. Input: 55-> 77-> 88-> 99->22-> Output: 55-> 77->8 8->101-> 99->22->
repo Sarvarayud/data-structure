@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void insertNode(struct Node** head_ref, int position, int new_data) {
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+    new_node->data = new_data;
+
+    if (position == 1) {
+        new_node->next = *head_ref;
+        *head_ref = new_node;
+    } else {
+        struct Node* temp = *head_ref;
+        for (int i = 1; i < position - 1 && temp != NULL; i++) {
+            temp = temp->next;
+        }
+
+        if (temp == NULL) {
+            printf("Position out of range\n");
+            return;
+        }
+
+        new_node->next = temp->next;
+        temp->next = new_node;
+    }
+}
+
+int main() {
+    struct Node* head = NULL;
+    insertNode(&head, 4, 101);
+
+    // Display the updated linked list
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d->", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+
+    return 0;
+}
