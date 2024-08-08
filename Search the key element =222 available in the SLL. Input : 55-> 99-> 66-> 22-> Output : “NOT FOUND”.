@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void searchKey(struct Node* head, int key) {
+    struct Node* current = head;
+    while (current != NULL) {
+        if (current->data == key) {
+            printf("Key element found in the singly linked list.");
+            return;
+        }
+        current = current->next;
+    }
+    printf("NOT FOUND");
+}
+
+int main() {
+    struct Node* head = NULL;
+    // Code to create and populate the singly linked list goes here
+
+    searchKey(head, 222);
+
+    return 0;
+}
