@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void deleteEndNode(struct Node* head) {
+    struct Node* temp = head;
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+    free(temp->next);
+    temp->next = NULL;
+}
+
+// Example usage
+int main() {
+    struct Node* head = NULL; // Initialize your linked list here
+    // Call deleteEndNode function
+    deleteEndNode(head);
+    // Print the updated linked list
+    // Your print function here
+    return 0;
+}
