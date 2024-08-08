@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void deleteFirstNode(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.");
+        return;
+    }
+
+    struct Node* temp = *head;
+    *head = temp->next;
+    free(temp);
+}
+
+// Example usage
+int main() {
+    struct Node* head = NULL; // Initialize your linked list
+    // Add nodes to the linked list
+
+    deleteFirstNode(&head); // Call the function to delete the first node
+
+    return 0;
+}
