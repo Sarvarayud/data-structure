@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <limits.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int findDifference(struct Node* head) {
+    int max = INT_MIN;
+    int min = INT_MAX;
+
+    struct Node* current = head;
+
+    while (current != NULL) {
+        if (current->data > max) {
+            max = current->data;
+        }
+        if (current->data < min) {
+            min = current->data;
+        }
+        current = current->next;
+    }
+
+    return max - min;
+}
+
+// Sample usage
+int main() {
+    struct Node* head = NULL;
+    // Populate the linked list with the given elements
+
+    int difference = findDifference(head);
+    printf("Difference = %d\n", difference);
+
+    return 0;
+}
